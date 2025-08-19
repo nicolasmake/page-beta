@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Promoções - Venda mais divulgando suas ofertas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="img/lgo.png" alt="logo">
+                </div>
+                <nav class="nav">
+                    <a href="#funciona">Como funciona</a>
+                    <a href="#howWork">Cadastrar</a>
+                    <a href="#offer">Oferta</a>
+                    <a href="#comparison">Vantagens</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <section class="hero">
+        <!-- Removed countdown timer, added better urgency messaging -->
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <div class="urgency-badge">🚨 ÚLTIMAS 48 HORAS - 99% OFF</div>
+                    <h1 class="hero-title"><span>Venda mais</span> divulgando suas ofertas <span>para quem já quer comprar!</span></h1>
+                    <p class="hero-subtitle">
+                        <span class="price-anchor">De R$ 5.940/ano</span> por <strong>R$ 59,40 no 1º ano</strong> (99% OFF) — sem comissão, sem complicação.
+                    </p>
+                    <button class="cta-button primary" onclick="scrollToOffer()">
+                        Quero divulgar minhas ofertas agora
+                    </button>
+                </div>
+                <div class="hero-right">
+                    <div class="mockup-container">
+                        <img src="img/mockkblack (1).webp" alt="App Beta Promoções" class="mockup-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="funciona">
+        <div class="container">
+            <h2 class="section-title">Como funciona</h2>
+            <!-- Redesigned as 2x2 grid with 3D hover effects -->
+            <div class="steps" id="steps-container">
+                <div class="step" data-step="1">
+                    <div class="step-number">1</div>
+                    <h3>Publique suas ofertas</h3>
+                    <p>Adicione fotos, preço e descrição dos seus produtos de forma simples e rápida no painel do lojista.</p>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <h3>Cliente vê no app</h3>
+                    <p>Seus produtos aparecem no celular dos clientes, filtrados por cidade e categoria para máxima relevância.</p>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <h3>Contato via WhatsApp</h3>
+                    <p>Cliente interessado clica e vai direto para seu WhatsApp - sem intermediários, sem complicação.</p>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <h3>Venda do seu jeito</h3>
+                    <p>Negocie preço, forma de pagamento e entrega diretamente com o cliente, mantendo total controle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Register -->
+    <section class="how-to-register" id="howWork">
+        <div class="container">
+            <div class="register-content">
+                <div class="register-left">
+                                        <div class="important-note">
+                        <strong>O CLIENTE NÃO FARÁ A COMPRA PELO APP.</strong>
+                    </div>
+                    <img src="img/img-mulher.webp" alt="Painel do Lojista" class="dashboard-image">
+                </div>
+                <div class="register-right">
+                    <h2>Como cadastrar um produto</h2>
+                    <ol class="register-steps">
+                        <li>Acesse o painel do lojista</li>
+                        <li>Informe título, categoria e descrição</li>
+                        <li>Adicione fotos nítidas (até 5)</li>
+                        <li>Defina preço e condições</li>
+                        <li>Confirme número do WhatsApp</li>
+                        <li>Clique em Publicar e pronto</li>
+                    </ol>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Por que escolher Beta Promoções?</h2>
+            <!-- Enhanced benefits with 3D flip card effects -->
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <p><strong>Clientes locais qualificados</strong><br>Pessoas da sua cidade procurando exatamente o que você vende</p>
+                    <div class="urgency-text">🔥 Aumente suas vendas em até 300%</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <p><strong>Zero comissão por venda</strong><br>Todo lucro fica com você - sem taxas escondidas</p>
+                    <div class="urgency-text">💸 Economize milhares em comissões</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <p><strong>Publique em segundos</strong><br>Sistema intuitivo - foto, preço, descrição e pronto!</p>
+                    <div class="urgency-text">⏱️ Menos de 2 minutos por produto</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <p><strong>Métricas em tempo real</strong><br>Veja quantas pessoas visualizaram cada oferta</p>
+                    <div class="urgency-text">📈 Otimize suas vendas com dados</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📱</div>
+                    <p><strong>WhatsApp integrado</strong><br>Cliente clica e já abre conversa no seu WhatsApp</p>
+                    <div class="urgency-text">💬 Conversão direta garantida</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔄</div>
+                    <p><strong>Até 20 ofertas ativas</strong><br>Rotacione produtos conforme sua estratégia</p>
+                    <div class="urgency-text">🚀 Máxima exposição dos produtos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Launch Offer -->
+    <section class="launch-offer" id="offer">
+        <div class="container">
+            <div class="offer-content">
+                <div class="urgency-badge">🚨 ÚLTIMAS VAGAS - 99% OFF</div>
+                <h2>Oferta de lançamento</h2>
+                <p>📢 Apenas <strong>R$ 59,40 no 1º ano</strong> (99% de desconto)<br>
+                Vitrine local para seus produtos, sem taxas e sem comissão.</p>
+                <button class="cta-button primary">Garantir meu acesso agora</button>
+                <div class="offer-details">
+                    <small>⚡ Ativação imediata • 🔒 Pagamento seguro • 📞 Suporte incluído</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison gradient-background" id="comparison">
+        <div class="container">
+            <h2 class="section-title">Comparação rápida</h2>
+            <!-- Simplified to 3 basic cards with subtle interaction -->
+            <div class="comparison-cards">
+                <div class="comparison-card bad-choice">
+                    <h3>Marketplace Tradicional</h3>
+                    <div class="bad-features">
+                        <p>❌ Comissão de 5-15% por venda</p>
+                        <p>❌ Concorrência nacional</p>
+                        <p>❌ Sem controle sobre preços</p>
+                    </div>
+                </div>
+
+                <div class="comparison-card highlight-choice" id="best-choice">
+                    <div class="savings-counter">
+                        <span class="counter-value">R$ 0</span>
+                        <span class="counter-label">economia total</span>
+                    </div>
+                    <h3>Beta Promoções</h3>
+                    <div class="good-features">
+                        <p>✅ Zero comissão</p>
+                        <p>✅ Foco 100% local</p>
+                        <p>✅ WhatsApp direto</p>
+                    </div>
+                    <div class="price-highlight">
+                        <span class="old-price">R$ 5.940/ano</span>
+                        <span class="new-price">R$ 59,40</span>
+                    </div>
+                    <button class="smart-choice-btn" onclick="makeUserFeelSpecial()">
+                        Quero essa economia!
+                    </button>
+                </div>
+
+                <div class="comparison-card bad-choice">
+                    <h3>Anúncios Pagos</h3>
+                    <div class="bad-features">
+                        <p>❌ Custo alto por clique</p>
+                        <p>❌ Sem garantia de vendas</p>
+                        <p>❌ Algoritmo instável</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        O cliente fala comigo dentro do app?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Não. O cliente clica no botão da oferta e vai direto para o seu WhatsApp.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        O app cobra comissão por venda?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Não. Sem comissão. Você paga o plano anual e pronto.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Posso pausar ou editar ofertas?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Sim. Total autonomia no painel do lojista.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Quantas ofertas posso manter ativas?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Até 20 ofertas simultaneamente (você pode trocar/rotacionar quando quiser).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Quais tipos de produtos posso anunciar?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Foco em produtos (moda, calçados, eletrônicos, acessórios, casa & decoração). Não contempla supermercados, alimentação ou serviços.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Preciso de site ou equipe técnica?
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Não. O cadastro é simples e guiado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para vender mais na sua cidade?</h2>
+                <p>Entre agora com 99% de desconto e publique suas ofertas hoje.</p>
+                <button class="cta-button primary large">Começar por R$ 59,40</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <nav class="nav">
+                    <a href="#funciona">Como funciona</a>
+                    <a href="#howWork">Cadastrar</a>
+                    <a href="#offer">Oferta</a>
+                    <a href="#comparison">Vantagens</a>
+                </nav>
+                </div>
+                <p>&copy; 2025 Beta Promoções. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
