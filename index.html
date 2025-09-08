@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -36,6 +36,7 @@
                     <p class="hero-subtitle">
                         <span class="price-anchor">De R$ 5.940/ano</span> por <strong>R$ 59,40 no 1º ano</strong> (99% OFF) — sem comissão, sem complicação.
                     </p>
+                    
                     <button class="cta-button primary" onclick="scrollToOffer()">
                         Quero divulgar minhas ofertas agora
                     </button>
@@ -94,7 +95,7 @@
                     <ol class="register-steps">
                         <li>Acesse o painel do lojista</li>
                         <li>Informe título, categoria e descrição</li>
-                        <li>Adicione fotos nítidas (até 5)</li>
+                        <li>Adicione fotos nítidas (até 6)</li>
                         <li>Defina preço e condições</li>
                         <li>Confirme número do WhatsApp</li>
                         <li>Clique em Publicar e pronto</li>
@@ -162,12 +163,12 @@
     </section>
 
     <!-- Comparison Table -->
-    <section class="comparison gradient-background" id="comparison">
+ <section class="comparison gradient-background" id="comparison" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
         <div class="container">
             <h2 class="section-title">Comparação rápida</h2>
             <!-- Simplified to 3 basic cards with subtle interaction -->
             <div class="comparison-cards">
-                <div class="comparison-card bad-choice">
+                <div class="comparison-card bad-choice" style="animation: auto ease 0s 1 normal none running none;">
                     <h3>Marketplace Tradicional</h3>
                     <div class="bad-features">
                         <p>❌ Comissão de 5-15% por venda</p>
@@ -177,26 +178,55 @@
                 </div>
 
                 <div class="comparison-card highlight-choice" id="best-choice">
-                    <div class="savings-counter">
-                        <span class="counter-value">R$ 0</span>
+                    <div class="savings-counter" style="opacity: 0; transform: translateY(10px);">
+                        <span class="counter-value">R$ 5.400</span>
                         <span class="counter-label">economia total</span>
                     </div>
-                    <h3>Beta Promoções</h3>
+                    <h3>Beta Promoções - Anual</h3>
                     <div class="good-features">
                         <p>✅ Zero comissão</p>
                         <p>✅ Foco 100% local</p>
                         <p>✅ WhatsApp direto</p>
+                          <p>✅ Até 20 publicações ativas</p>
+                    <p>✅ Filtros por cidade e categoria</p>
+                    <p>✅ Dashboard de métricas</p>
+                    <p>✅ Suporte por chat ao vivo</p>
+                    
                     </div>
                     <div class="price-highlight">
                         <span class="old-price">R$ 5.940/ano</span>
                         <span class="new-price">R$ 59,40</span>
+                        <small>*Valor no primeiro ano</small>
                     </div>
-                    <button class="smart-choice-btn" onclick="makeUserFeelSpecial()">
+                    <a href="https://betapromocoes.com/billing/?planId=1
+" class="smart-choice-btn" onclick="makeUserFeelSpecial()">
                         Quero essa economia!
-                    </button>
+                    </a>
                 </div>
 
-                <div class="comparison-card bad-choice">
+                <div class="comparison-card highlight-choice" id="best-choice">
+                    
+                    <h3>Beta Promoções - Mensal</h3>
+                    <div class="good-features">
+                        <p>✅ Zero comissão</p>
+                        <p>✅ Foco 100% local</p>
+                        <p>✅ WhatsApp direto</p>
+                    <p>✅ Até 20 publicações ativas</p>
+                    <p>✅ Filtros por cidade e categoria</p>
+                    <p>✅ Dashboard de métricas</p>
+                    <p>✅ Suporte por chat ao vivo</p>
+                    
+                    </div>
+                    <div class="price-highlight">
+                        <span class="old-price">R$ 495,00/mês</span>
+                        <span class="new-price">R$ 49,50</span>
+                        <small>*Valor mensal</small>
+                    </div>
+                    <a href="https://betapromocoes.com/billing/?planId=2
+" class="smart-choice-btn" onclick="makeUserFeelSpecial()">
+                        Quero essa economia!
+                    </a>
+                </div><div class="comparison-card bad-choice" style="animation: auto ease 0s 1 normal none running none;">
                     <h3>Anúncios Pagos</h3>
                     <div class="bad-features">
                         <p>❌ Custo alto por clique</p>
@@ -207,7 +237,6 @@
             </div>
         </div>
     </section>
-
     <!-- FAQ -->
     <section class="faq" id="faq">
         <div class="container">
@@ -264,7 +293,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <p>Foco em produtos (moda, calçados, eletrônicos, acessórios, casa & decoração). Não contempla supermercados, alimentação ou serviços.</p>
+                            <p>Qualquer produto ou serviço que você queira dar mais visibilidade. Moda, beleza, tecnologia, acessórios, móveis e muito mais. Aqui, sua loja tem espaço garantido para mostrar o que vende e se conectar com novos clientes.</p>
                         </div>
                     </div>
                 </div>
