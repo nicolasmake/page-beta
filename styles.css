@@ -592,13 +592,14 @@ h2{
   background: #ffffff;
   color: #2c2c2c;
 }
-
+#comparison .container{
+    max-width: 1400px;
+}
 .comparison-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin: 2rem 0;
-  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -654,6 +655,7 @@ h2{
 .highlight-choice h3{
     font-size: 27px;
     color: #548630;
+    line-height: 1.3;
 }
 .good-features p {
   color: #548630;
@@ -691,6 +693,7 @@ h2{
   transition: all 0.3s ease;
   width: 100%;
   margin-top: 1rem;
+  text-decoration: none;
 }
 
 .smart-choice-btn:hover {
