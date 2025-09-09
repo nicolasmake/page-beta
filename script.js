@@ -1,6 +1,6 @@
 // Smooth scrolling for anchor links
 function scrollToOffer() {
-  document.getElementById("comparison").scrollIntoView({
+  document.getElementById("offer").scrollIntoView({
     behavior: "smooth",
   })
 }
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // Animate the counter from 0 to final value
           let currentValue = 0
-          const targetValue = 5400
+          const targetValue = 5880
           const increment = targetValue / 30
 
           const counterAnimation = setInterval(() => {
@@ -254,4 +254,3 @@ function scrollToTop() {
     behavior: "smooth",
   })
 }
-
