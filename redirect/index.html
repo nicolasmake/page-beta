@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Beta Promoções — Baixe o App</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beta Promoções — Baixe o App</title>
 
-  <!-- Fonte Montserrat -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Fonte Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!--
+    <!--
     Página única, responsiva e centralizada com FLEXBOX.
     - Conteúdo inteiramente centralizado (vertical/horizontal) com flex.
     - Dois cards (iOS/Android) com flex-wrap (2 colunas -> 1 no mobile).
@@ -19,190 +22,722 @@
     - HTML, CSS e JS puros; clean code e comentado.
   -->
 
-  <link rel="preload" href="https://lp.betapromocoes.com/redirect/styles.css" as="style" />
-  <meta name="description" content="Baixe o aplicativo Beta Promoções para iOS e Android." />
-</head>
-<body>
-  <!-- Wrapper principal flex que centraliza TUDO -->
-  <div class="page">
-    <!-- Cabeçalho -->
-    <header class="hero" role="banner" aria-label="Cabeçalho da página">
-      <div class="logo">
-  <img
-    src="https://lp.betapromocoes.com/img/lgo.png"
-    alt="Beta Promoções"
-    width="180" height="48"               
-    loading="eager" decoding="async"
-     
-  >
-</div>
-<div class="hero__content fade-in-up" style="--delay: 0ms">
-        <!-- <h1 class="hero__title">
+    <style>
+      /* ===================================================================
+   Beta Promoções — Stylesheet (Flexbox + Hero com formas animadas)
+   Cores:
+   - Primária (botões): #548630
+   - Destaques: #eca300
+   - Detalhes sutis: #dd110d
+   =================================================================== */
+
+      :root {
+        --color-bg: #f7f7f7;
+        --color-text: #1e1e1e;
+
+        --color-primary: #548630; /* botões */
+        --color-accent: #eca300; /* destaques */
+        --color-detail: #dd110d; /* detalhes sutis */
+
+        --radius-2xl: 1.25rem;
+        --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.12);
+
+        --container-w: 1100px;
+      }
+
+      /* Reset/normalização */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+
+        /* Fonte Montserrat */
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+
+        background: radial-gradient(
+            1200px 600px at 70% -10%,
+            rgba(236, 163, 0, 0.12),
+            transparent 60%
+          ),
+          radial-gradient(
+            1200px 800px at -10% 30%,
+            rgba(84, 134, 48, 0.1),
+            transparent 60%
+          ),
+          var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ===========================
+   Layout principal (Flexbox)
+   =========================== */
+      .page {
+        min-height: 100dvh;
+        display: flex; /* FLEXBOX */
+        flex-direction: column;
+        align-items: center; /* centraliza horizontal */
+        justify-content: center; /* centraliza vertical */
+        padding: 1rem;
+      }
+
+      /* Hero com formas animadas via pseudo-elementos */
+      .hero {
+        position: relative;
+        display: flex; /* FLEXBOX */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: min(100%, var(--container-w));
+        margin-bottom: 0.5rem;
+        padding: clamp(2rem, 6vw, 4rem) 1rem 1rem;
+        overflow: hidden; /* garante que as formas não criem scroll */
+        flex-direction: column;
+      }
+
+      /* Referência enviada (losango rotativo) */
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        width: 200px;
+        height: 200px;
+        background: #548630; /* green accent shape */
+        opacity: 0.1;
+        /* losango (quadrado rotacionado): usando clip-path como na ref */
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        animation: rotate 20s linear infinite;
+      }
+
+      /* Forma adicional (círculo flutuante em destaque #eca300) */
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 5%;
+        left: 8%;
+        width: 160px;
+        height: 160px;
+        background: #eca300;
+        opacity: 0.12;
+        border-radius: 50%;
+        animation: floaty 6s ease-in-out infinite alternate,
+          slow-drift 24s linear infinite;
+        filter: blur(0.2px);
+      }
+
+      /* ===== Logo PNG ===== */
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem; /* espaço entre logo e título */
+      }
+
+      .logo img {
+        width: auto;
+        height: auto;
+        display: block; /* remove “gaps” de inline images */
+      }
+
+      /* Mobile: logo um pouco menor */
+      @media (max-width: 760px) {
+        .logo img {
+          --logo-w: 150px;
+        }
+      }
+
+      /* Ajustes responsivos para as formas do hero */
+      @media (max-width: 760px) {
+        .hero::before {
+          width: 140px;
+          height: 140px;
+          right: -2%;
+          top: 0%;
+          opacity: 0.12;
+        }
+
+        .download-row {
+          flex-direction: column; /* empilha os cards */
+          align-items: center; /* centraliza a coluna */
+          justify-content: center;
+          gap: 1rem;
+          padding: 1rem 0 1.5rem;
+          width: 100%;
+        }
+      }
+
+      /* Animações das formas */
+      @keyframes rotate {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes floaty {
+        0% {
+          transform: translateY(-6px) scale(1);
+        }
+        100% {
+          transform: translateY(6px) scale(1.03);
+        }
+      }
+      @keyframes slow-drift {
+        0% {
+          transform: translateX(0) rotate(0);
+        }
+        100% {
+          transform: translateX(20px) rotate(360deg);
+        }
+      }
+
+      /* Conteúdo do hero */
+      .hero__title {
+        font-weight: 800;
+        font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 0.35rem;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.12em 0.4em;
+        border-radius: 0.35em;
+        background: linear-gradient(180deg, var(--color-accent), #ffcf4d);
+        color: var(--color-detail);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      }
+      .hero__subtitle {
+        margin: 0.25rem auto 0;
+
+        opacity: 0.9;
+        font-weight: 500;
+      }
+
+      /* Main */
+      .main {
+        display: flex; /* FLEXBOX */
+        align-items: center;
+        justify-content: center;
+        width: min(100%, var(--container-w));
+      }
+
+      /* Cards em linha (responsivo) */
+      .download-row {
+        display: flex; /* FLEXBOX */
+        flex-wrap: wrap;
+        gap: clamp(1rem, 3vw, 1.5rem);
+        align-items: stretch;
+        justify-content: center;
+        width: 100%;
+        padding: clamp(1rem, 2.5vw, 1.5rem) 0 clamp(2rem, 5vw, 3rem);
+      }
+
+      /* Card */
+      .card {
+        /* 2 colunas; empilha no mobile */
+        max-width: 520px;
+        display: flex;
+        text-align: center;
+        background: #fff;
+        border-radius: var(--radius-2xl);
+        padding: clamp(1.25rem, 2.5vw, 1.75rem);
+        box-shadow: var(--shadow-soft);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        will-change: transform;
+        text-align: center;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-hover);
+      }
+      .card__icon .icon {
+        width: 56px;
+        height: 56px;
+        fill: var(--color-primary);
+        filter: drop-shadow(0 4px 10px rgba(84, 134, 48, 0.25));
+      }
+      .card__title {
+        margin: 0.75rem 0 0.25rem;
+        font-size: clamp(1.25rem, 1.6vw + 0.75rem, 1.65rem);
+        font-weight: 700;
+      }
+      .card__text {
+        margin: 0 0 1rem;
+        color: #3a3a3a;
+        font-weight: 500;
+      }
+
+      /* ---------------------------
+   Buttons (especificação pedida)
+   --------------------------- */
+      .cta-button {
+        /* Green buttons for all CTAs as requested */
+        background: #548630;
+        color: #ffffff;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 800;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex; /* FLEXBOX para ícone/label */
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        position: relative;
+        overflow: hidden;
+        animation: urgentPulse 2s infinite; /* pulsando por padrão */
+        box-shadow: 0 4px 15px rgba(84, 134, 48, 0.3);
+      }
+      @keyframes urgentPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(84, 134, 48, 0.4);
+        }
+        50% {
+          transform: scale(1.02);
+          box-shadow: 0 0 0 10px rgba(84, 134, 48, 0);
+        }
+      }
+      .cta-button:hover,
+      .cta-button:focus-visible {
+        background: #456b28;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(84, 134, 48, 0.4);
+        animation: none; /* pausa o pulso ao interagir */
+      }
+
+      .btn__icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      /* Ripple no clique — usa cor de destaque */
+      .ripple {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .ripple__circle {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: color-mix(in oklab, var(--color-accent), white 12%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.6;
+        animation: ripple 0.6s ease-out forwards;
+      }
+      @keyframes ripple {
+        to {
+          transform: translate(-50%, -50%) scale(28);
+          opacity: 0;
+        }
+      }
+
+      /* Animações de entrada */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: var(--delay, 0ms);
+      }
+      @keyframes fade-in-up {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Rodapé */
+      .footer {
+        display: flex; /* FLEXBOX */
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0 0.5rem;
+        color: #555;
+        width: min(100%, var(--container-w));
+        text-align: center;
+      }
+      .footer small {
+        border-top: 2px dashed
+          color-mix(in oklab, var(--color-detail), white 65%);
+        padding-top: 0.75rem;
+      }
+
+      /* Acessibilidade & preferências do usuário */
+      @media (prefers-reduced-motion: reduce) {
+        .fade-in-up {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+        .cta-button {
+          animation: none;
+        }
+        .hero::before,
+        .hero::after {
+          animation: none;
+        }
+      }
+
+      /* Utilitários */
+      .icon {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .icon--small {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      } /* restaurado */
+      .btn__label {
+        letter-spacing: 0.2px;
+      }
+
+      /* alteração da posição circulo back */
+
+      /* ==========================================================
+   AJUSTE PONTUAL — .hero::after como fundo global + animação pulse
+   - Fica fixo no viewport (cobre a página inteira, mesmo ao rolar)
+   - Fica atrás de todo o conteúdo
+   - Você controla posição/tamanho por variáveis CSS
+   ========================================================== */
+
+      /* Garante que o conteúdo fique acima do fundo fixo */
+      .page {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* (Opcional) Se antes o hero tinha overflow:hidden, não afeta mais porque é fixed,
+   mas deixo visível para evitar qualquer clipping futuro. */
+      .hero {
+        overflow: visible;
+      }
+
+      .hero::after {
+        content: "";
+        position: fixed; /* agora referencia o viewport */
+        top: 64%; /* ajuste fino de posição Y */
+        left: 20%; /* ajuste fino de posição X */
+        width: 160px; /* ajuste de tamanho */
+        height: 160px;
+        transform: translate(
+          -50%,
+          -50%
+        ); /* centraliza a âncora no ponto top/left */
+        z-index: 0; /* atrás do conteúdo (.page tem z-index:1) */
+        pointer-events: none; /* não bloqueia cliques */
+        background: #eca300; /* cor de destaque */
+        opacity: 0.12;
+        border-radius: 50%; /* forma circular */
+        animation: pulseBg 4s ease-in-out infinite,
+          /* PULSO */ slow-drift 24s linear infinite; /* leve deriva opcional */
+        filter: blur(0.2px);
+      }
+
+      /* Animação de pulso do fundo */
+      @keyframes pulseBg {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.12;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.08);
+          opacity: 0.18;
+        }
+      }
+    </style>
+
+    <meta
+      name="description"
+      content="Baixe o aplicativo Beta Promoções para iOS e Android."
+    />
+  </head>
+  <body>
+    <!-- Wrapper principal flex que centraliza TUDO -->
+    <div class="page">
+      <!-- Cabeçalho -->
+      <header class="hero" role="banner" aria-label="Cabeçalho da página">
+        <div class="logo">
+          <img
+            src="https://lp.betapromocoes.com/img/lgo.png"
+            alt="Beta Promoções"
+            width="180"
+            height="48"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="hero__content fade-in-up" style="--delay: 0ms">
+          <!-- <h1 class="hero__title">
           Beta <span class="badge" aria-hidden="true">Promoções</span>
         </h1> -->
-        <p class="hero__subtitle">
-          Economize de verdade: baixe o app oficial para acompanhar ofertas em tempo real.
-        </p>
-      </div>
-      <!-- LOGO PNG — não clicável -->
+          <p class="hero__subtitle">
+            Economize de verdade: baixe o app oficial para acompanhar ofertas em
+            tempo real.
+          </p>
+        </div>
+        <!-- LOGO PNG — não clicável -->
+      </header>
 
-    </header>
-
-    <!-- Conteúdo principal -->
-    <main class="main" role="main">
-      <section class="download-row">
-        <!-- Card iOS -->
-        <article class="card fade-in-up" style="--delay: 120ms">
-          <div class="card__icon" aria-hidden="true">
-            <!-- Ícone minimalista iOS (SVG) -->
-            <svg viewBox="0 0 64 64" class="icon">
-              <path d="M44.5 34.2c-.1-7.9 6.4-11.6 6.7-11.8-3.6-5.2-9.2-5.9-11.2-6-4.8-.5-9.3 2.8-11.7 2.8-2.4 0-6.1-2.7-10-2.6-5.1.1-9.8 3-12.4 7.6-5.3 9.2-1.3 22.7 3.8 30.1 2.6 3.7 5.8 7.9 10 7.8 4-.2 5.5-2.5 10.4-2.5s6.2 2.5 10.4 2.4c4.3-.1 7-3.8 9.6-7.5 3-4.4 4.3-8.6 4.4-8.8-.1 0-8.4-3.2-8.4-9.5z"/>
-              <path d="M38.6 10.6c2-2.5 3.4-6 3-9.5-2.9.1-6.6 2-8.7 4.6-1.9 2.2-3.5 5.8-3.1 9.2 3.3.3 6.7-1.7 8.8-4.3z"/>
-            </svg>
-          </div>
-          <h2 class="card__title">Baixe no iOS</h2>
-          <p class="card__text">Disponível na App Store. Compatível com iPhone e iPad. Clique aqui para baixar</p>
-          <a
-            class="cta-button"
-            href="https://apps.apple.com/br/app/beta-promo%C3%A7%C3%B5es/id6746173991"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Abrir App Store para baixar o Beta Promoções"
-            data-ripple
-          >
-            <span class="btn__icon" aria-hidden="true">
-              <!-- Ícone decorativo -->
-<svg version="1.1" id="fi_831276" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<path style="fill:#00C3FF;" d="M407,512H105C47.103,512,0,464.897,0,407V105C0,47.103,47.103,0,105,0h302
-	c57.897,0,105,47.103,105,105v302C512,464.897,464.897,512,407,512z"></path>
-<path style="fill:#00AAF0;" d="M407,0H256v512h151c57.897,0,105-47.103,105-105V105C512,47.103,464.897,0,407,0z"></path>
-<g>
-	<path style="fill:#FFFFFF;" d="M157.649,394.515c-4.625,8.011-13.046,12.494-21.693,12.495c-4.239,0-8.531-1.077-12.458-3.344l0,0
-		c-11.938-6.892-16.043-22.212-9.151-34.15l4.917-8.516h57.735L157.649,394.515z"></path>
-	<path style="fill:#FFFFFF;" d="M110.5,341c-13.785,0-25-11.215-25-25s11.215-25,25-25h49.178l67.454-116.834l-18.281-31.664
+      <!-- Conteúdo principal -->
+      <main class="main" role="main">
+        <section class="download-row">
+          <!-- Card iOS -->
+          <article class="card fade-in-up" style="--delay: 120ms">
+            <div class="card__icon" aria-hidden="true">
+              <!-- Ícone minimalista iOS (SVG) -->
+              <svg viewBox="0 0 64 64" class="icon">
+                <path
+                  d="M44.5 34.2c-.1-7.9 6.4-11.6 6.7-11.8-3.6-5.2-9.2-5.9-11.2-6-4.8-.5-9.3 2.8-11.7 2.8-2.4 0-6.1-2.7-10-2.6-5.1.1-9.8 3-12.4 7.6-5.3 9.2-1.3 22.7 3.8 30.1 2.6 3.7 5.8 7.9 10 7.8 4-.2 5.5-2.5 10.4-2.5s6.2 2.5 10.4 2.4c4.3-.1 7-3.8 9.6-7.5 3-4.4 4.3-8.6 4.4-8.8-.1 0-8.4-3.2-8.4-9.5z"
+                />
+                <path
+                  d="M38.6 10.6c2-2.5 3.4-6 3-9.5-2.9.1-6.6 2-8.7 4.6-1.9 2.2-3.5 5.8-3.1 9.2 3.3.3 6.7-1.7 8.8-4.3z"
+                />
+              </svg>
+            </div>
+            <h2 class="card__title">Baixe no iOS</h2>
+            <p class="card__text">
+              Disponível na App Store. Compatível com iPhone e iPad. Clique aqui
+              para baixar
+            </p>
+            <a
+              class="cta-button"
+              href="https://apps.apple.com/br/app/beta-promo%C3%A7%C3%B5es/id6746173991"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir App Store para baixar o Beta Promoções"
+              data-ripple
+            >
+              <span class="btn__icon" aria-hidden="true">
+                <!-- Ícone decorativo -->
+                <svg
+                  version="1.1"
+                  id="fi_831276"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 512 512"
+                  style="enable-background: new 0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <path
+                    style="fill: #00c3ff"
+                    d="M407,512H105C47.103,512,0,464.897,0,407V105C0,47.103,47.103,0,105,0h302
+	c57.897,0,105,47.103,105,105v302C512,464.897,464.897,512,407,512z"
+                  ></path>
+                  <path
+                    style="fill: #00aaf0"
+                    d="M407,0H256v512h151c57.897,0,105-47.103,105-105V105C512,47.103,464.897,0,407,0z"
+                  ></path>
+                  <g>
+                    <path
+                      style="fill: #ffffff"
+                      d="M157.649,394.515c-4.625,8.011-13.046,12.494-21.693,12.495c-4.239,0-8.531-1.077-12.458-3.344l0,0
+		c-11.938-6.892-16.043-22.212-9.151-34.15l4.917-8.516h57.735L157.649,394.515z"
+                    ></path>
+                    <path
+                      style="fill: #ffffff"
+                      d="M110.5,341c-13.785,0-25-11.215-25-25s11.215-25,25-25h49.178l67.454-116.834l-18.281-31.664
 		c-6.892-11.938-2.788-27.258,9.15-34.151h0.001c11.938-6.892,27.258-2.786,34.15,9.151l3.848,6.665l3.848-6.664
 		c6.895-11.939,22.215-16.043,34.15-9.151c5.783,3.339,9.92,8.73,11.648,15.18c1.729,6.45,0.841,13.188-2.498,18.971L217.413,291
-		h54.079l28.868,50H110.5z"></path>
-</g>
-<g>
-	<path style="fill:#F2F2F2;" d="M401.5,341h-20.311l16.463,28.515c6.893,11.937,2.788,27.257-9.149,34.15
+		h54.079l28.868,50H110.5z"
+                    ></path>
+                  </g>
+                  <g>
+                    <path
+                      style="fill: #f2f2f2"
+                      d="M401.5,341h-20.311l16.463,28.515c6.893,11.937,2.788,27.257-9.149,34.15
 		c-3.853,2.224-8.129,3.361-12.461,3.361c-2.172,0-4.356-0.285-6.511-0.863c-6.451-1.729-11.842-5.866-15.181-11.65l-86.804-150.348
-		l28.867-50L352.322,291H401.5c13.785,0,25,11.215,25,25S415.285,341,401.5,341z"></path>
-	<polygon style="fill:#F2F2F2;" points="256,291 256,341 300.36,341 271.493,291 	"></polygon>
-	<path style="fill:#F2F2F2;" d="M305.646,123.531c-1.729-6.45-5.865-11.842-11.648-15.18c-11.936-6.892-27.256-2.789-34.15,9.151
-		L256,124.166l0,0v100l47.148-81.664C306.487,136.719,307.375,129.982,305.646,123.531z"></path>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-            </span>
-            <span class="btn__label">App Store</span>
-            <span class="ripple" aria-hidden="true"></span>
-          </a>
-        </article>
+		l28.867-50L352.322,291H401.5c13.785,0,25,11.215,25,25S415.285,341,401.5,341z"
+                    ></path>
+                    <polygon
+                      style="fill: #f2f2f2"
+                      points="256,291 256,341 300.36,341 271.493,291 	"
+                    ></polygon>
+                    <path
+                      style="fill: #f2f2f2"
+                      d="M305.646,123.531c-1.729-6.45-5.865-11.842-11.648-15.18c-11.936-6.892-27.256-2.789-34.15,9.151
+		L256,124.166l0,0v100l47.148-81.664C306.487,136.719,307.375,129.982,305.646,123.531z"
+                    ></path>
+                  </g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                </svg>
+              </span>
+              <span class="btn__label">App Store</span>
+              <span class="ripple" aria-hidden="true"></span>
+            </a>
+          </article>
 
-        <!-- Card Android -->
-        <article class="card fade-in-up" style="--delay: 240ms">
-          <div class="card__icon" aria-hidden="true">
-            <!-- Ícone minimalista Android (SVG) -->
-            <svg viewBox="0 0 64 64" class="icon">
-              <path d="M20 22h24v22h-4v8h-4v-8h-8v8h-4v-8h-4V22zm-6 6h4v10h-4V28zm32 0h4v10h-4V28zM25 16h2l-2-4 2-1 3 5h4l3-5 2 1-2 4h2v4H25v-4z"/>
-            </svg>
-          </div>
-          <h2 class="card__title">Baixe no Android</h2>
-          <p class="card__text">Disponível no Google Play. Compatível com milhares de dispositivos. Clique aqui para baixar</p>
-          <a
-            class="cta-button"
-            href="https://play.google.com/store/apps/details?id=com.betapromo.mobil"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Abrir Google Play para baixar o Beta Promoções"
-            data-ripple
-          >
-            <span class="btn__icon" aria-hidden="true">
-              <!-- Ícone decorativo -->
-<svg version="1.1" id="fi_888857" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 469.847 469.847" style="enable-background:new 0 0 469.847 469.847;" xml:space="preserve">
-<path style="fill:#2196F3;" d="M270.336,234.965L34.39,462.165c-11.049-7.551-17.609-20.111-17.493-33.493V41.258
-	C16.781,27.876,23.341,15.316,34.39,7.765L270.336,234.965z"></path>
-<path style="fill:#4CAF50;" d="M352.896,155.605l-82.56,79.36L34.39,7.765c0.889-0.689,1.815-1.33,2.773-1.92
-	c12.47-7.558,28.046-7.802,40.747-0.64L352.896,155.605z"></path>
-<path style="fill:#FFC107;" d="M452.95,234.965c0.154,15.107-8.055,29.061-21.333,36.267l-78.72,43.093l-82.56-79.36l82.56-79.36
-	l78.72,43.093C444.895,205.904,453.104,219.858,452.95,234.965z"></path>
-<path style="fill:#F44336;" d="M352.896,314.325L77.91,464.725c-12.729,7.051-28.246,6.807-40.747-0.64
-	c-0.958-0.59-1.884-1.231-2.773-1.92l235.947-227.2L352.896,314.325z"></path>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-            </span>
-            <span class="btn__label">Google Play</span>
-            <span class="ripple" aria-hidden="true"></span>
-          </a>
-        </article>
-      </section>
-    </main>
+          <!-- Card Android -->
+          <article class="card fade-in-up" style="--delay: 240ms">
+            <div class="card__icon" aria-hidden="true">
+              <!-- Ícone minimalista Android (SVG) -->
+              <svg viewBox="0 0 64 64" class="icon">
+                <path
+                  d="M20 22h24v22h-4v8h-4v-8h-8v8h-4v-8h-4V22zm-6 6h4v10h-4V28zm32 0h4v10h-4V28zM25 16h2l-2-4 2-1 3 5h4l3-5 2 1-2 4h2v4H25v-4z"
+                />
+              </svg>
+            </div>
+            <h2 class="card__title">Baixe no Android</h2>
+            <p class="card__text">
+              Disponível no Google Play. Compatível com milhares de
+              dispositivos. Clique aqui para baixar
+            </p>
+            <a
+              class="cta-button"
+              href="https://play.google.com/store/apps/details?id=com.betapromo.mobil"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir Google Play para baixar o Beta Promoções"
+              data-ripple
+            >
+              <span class="btn__icon" aria-hidden="true">
+                <!-- Ícone decorativo -->
+                <svg
+                  version="1.1"
+                  id="fi_888857"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 469.847 469.847"
+                  style="enable-background: new 0 0 469.847 469.847"
+                  xml:space="preserve"
+                >
+                  <path
+                    style="fill: #2196f3"
+                    d="M270.336,234.965L34.39,462.165c-11.049-7.551-17.609-20.111-17.493-33.493V41.258
+	C16.781,27.876,23.341,15.316,34.39,7.765L270.336,234.965z"
+                  ></path>
+                  <path
+                    style="fill: #4caf50"
+                    d="M352.896,155.605l-82.56,79.36L34.39,7.765c0.889-0.689,1.815-1.33,2.773-1.92
+	c12.47-7.558,28.046-7.802,40.747-0.64L352.896,155.605z"
+                  ></path>
+                  <path
+                    style="fill: #ffc107"
+                    d="M452.95,234.965c0.154,15.107-8.055,29.061-21.333,36.267l-78.72,43.093l-82.56-79.36l82.56-79.36
+	l78.72,43.093C444.895,205.904,453.104,219.858,452.95,234.965z"
+                  ></path>
+                  <path
+                    style="fill: #f44336"
+                    d="M352.896,314.325L77.91,464.725c-12.729,7.051-28.246,6.807-40.747-0.64
+	c-0.958-0.59-1.884-1.231-2.773-1.92l235.947-227.2L352.896,314.325z"
+                  ></path>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                </svg>
+              </span>
+              <span class="btn__label">Google Play</span>
+              <span class="ripple" aria-hidden="true"></span>
+            </a>
+          </article>
+        </section>
+      </main>
 
-    <!-- Rodapé -->
-    <footer class="footer fade-in-up" style="--delay: 360ms">
-      <small>© <span id="year"></span> Beta Promoções • Página de download</small>
-    </footer>
-  </div>
+      <!-- Rodapé -->
+      <footer class="footer fade-in-up" style="--delay: 360ms">
+        <small
+          >© <span id="year"></span> Beta Promoções • Página de download</small
+        >
+      </footer>
+    </div>
 
-  <script src="https://lp.betapromocoes.com/redirect/script.js" defer></script>
-</body>
+    <script>
+      /* ===============================================================
+   Beta Promoções — Interações
+   - Atualiza ano automaticamente
+   - Efeito ripple em cliques (micro interação)
+   - Respeita prefers-reduced-motion
+   =============================================================== */
+
+      // Atualiza o ano no rodapé
+      document.getElementById("year").textContent = String(
+        new Date().getFullYear()
+      );
+
+      // Efeito ripple nos elementos com [data-ripple]
+      (function enableRipple() {
+        const motionOK = !window.matchMedia("(prefers-reduced-motion: reduce)")
+          .matches;
+
+        document.querySelectorAll("[data-ripple]").forEach((el) => {
+          // Cria host do ripple se não existir
+          let rippleHost = el.querySelector(".ripple");
+          if (!rippleHost) {
+            rippleHost = document.createElement("span");
+            rippleHost.className = "ripple";
+            rippleHost.setAttribute("aria-hidden", "true");
+            el.appendChild(rippleHost);
+          }
+
+          el.addEventListener("click", (ev) => {
+            if (!motionOK) return; // respeita preferência do usuário
+
+            const rect = el.getBoundingClientRect();
+            const circle = document.createElement("span");
+            circle.className = "ripple__circle";
+            const x = ev.clientX - rect.left;
+            const y = ev.clientY - rect.top;
+            circle.style.left = x + "px";
+            circle.style.top = y + "px";
+            rippleHost.appendChild(circle);
+
+            // Remove o círculo ao fim da animação
+            circle.addEventListener("animationend", () => circle.remove());
+          });
+        });
+      })();
+    </script>
+  </body>
 </html>
