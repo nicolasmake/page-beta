@@ -1,0 +1,391 @@
+/* ===================================================================
+   Beta Promoções — Stylesheet (Flexbox + Hero com formas animadas)
+   Cores:
+   - Primária (botões): #548630
+   - Destaques: #eca300
+   - Detalhes sutis: #dd110d
+   =================================================================== */
+
+:root {
+  --color-bg: #f7f7f7;
+  --color-text: #1e1e1e;
+
+  --color-primary: #548630;  /* botões */
+  --color-accent:  #eca300;  /* destaques */
+  --color-detail:  #dd110d;  /* detalhes sutis */
+
+  --radius-2xl: 1.25rem;
+  --shadow-soft: 0 10px 30px rgba(0,0,0,.08);
+  --shadow-hover: 0 14px 36px rgba(0,0,0,.12);
+
+  --container-w: 1100px;
+}
+
+/* Reset/normalização */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+
+  /* Fonte Montserrat */
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  background:
+    radial-gradient(1200px 600px at 70% -10%, rgba(236,163,0,.12), transparent 60%),
+    radial-gradient(1200px 800px at -10% 30%, rgba(84,134,48,.10), transparent 60%),
+    var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===========================
+   Layout principal (Flexbox)
+   =========================== */
+.page {
+  min-height: 100dvh;
+  display: flex;                 /* FLEXBOX */
+  flex-direction: column;
+  align-items: center;           /* centraliza horizontal */
+  justify-content: center;       /* centraliza vertical */
+  padding: 1rem;
+}
+
+/* Hero com formas animadas via pseudo-elementos */
+.hero {
+  position: relative;
+  display: flex;                 /* FLEXBOX */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: min(100%, var(--container-w));
+  margin-bottom: .5rem;
+  padding: clamp(2rem, 6vw, 4rem) 1rem 1rem;
+  overflow: hidden; /* garante que as formas não criem scroll */
+  flex-direction: column;
+}
+
+/* Referência enviada (losango rotativo) */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 200px;
+  height: 200px;
+  background: #548630;     /* green accent shape */
+  opacity: 0.10;
+  /* losango (quadrado rotacionado): usando clip-path como na ref */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation: rotate 20s linear infinite;
+}
+
+/* Forma adicional (círculo flutuante em destaque #eca300) */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 5%;
+  left: 8%;
+  width: 160px;
+  height: 160px;
+  background: #eca300;
+  opacity: 0.12;
+  border-radius: 50%;
+  animation: floaty 6s ease-in-out infinite alternate,
+             slow-drift 24s linear infinite;
+  filter: blur(.2px);
+}
+
+
+/* ===== Logo PNG ===== */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .75rem;            /* espaço entre logo e título */
+}
+
+.logo img {  
+  width: auto;
+  height: auto;
+  display: block;                   /* remove “gaps” de inline images */
+}
+
+/* Mobile: logo um pouco menor */
+@media (max-width: 760px) {
+  .logo img { --logo-w: 150px; }
+}
+
+
+/* Ajustes responsivos para as formas do hero */
+@media (max-width: 760px) {
+  .hero::before {
+    width: 140px;
+    height: 140px;
+    right: -2%;
+    top: 0%;
+    opacity: 0.12;
+  }
+
+  .download-row {
+    flex-direction: column;     /* empilha os cards */
+    align-items: center;        /* centraliza a coluna */
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0 1.5rem;
+    width: 100%;
+  }
+
+}
+
+/* Animações das formas */
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+@keyframes floaty {
+  0%   { transform: translateY(-6px) scale(1); }
+  100% { transform: translateY(6px)  scale(1.03); }
+}
+@keyframes slow-drift {
+  0%   { transform: translateX(0) rotate(0); }
+  100% { transform: translateX(20px) rotate(360deg); }
+}
+
+/* Conteúdo do hero */
+.hero__title {
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 .35rem;
+}
+.badge {
+  display: inline-block;
+  padding: .12em .4em;
+  border-radius: .35em;
+  background: linear-gradient(180deg, var(--color-accent), #ffcf4d);
+  color: var(--color-detail);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.1);
+}
+.hero__subtitle {
+  margin: .25rem auto 0;
+
+  opacity: .9;
+  font-weight: 500;
+}
+
+/* Main */
+.main {
+  display: flex;                 /* FLEXBOX */
+  align-items: center;
+  justify-content: center;
+  width: min(100%, var(--container-w));
+}
+
+/* Cards em linha (responsivo) */
+.download-row {
+  display: flex;                 /* FLEXBOX */
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  padding: clamp(1rem, 2.5vw, 1.5rem) 0 clamp(2rem, 5vw, 3rem);
+}
+
+/* Card */
+.card {
+                 /* 2 colunas; empilha no mobile */
+                 max-width: 520px;
+                 display: flex;
+                 text-align: center;
+                 background: #fff;
+                 border-radius: var(--radius-2xl);
+                 padding: clamp(1.25rem, 2.5vw, 1.75rem);
+                 box-shadow: var(--shadow-soft);
+                 transition: transform .25s ease, box-shadow .25s ease;
+                 will-change: transform;
+                 text-align: center;
+                 flex-direction: column;
+                 align-content: center;
+                 justify-content: center;
+                 align-items: center;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.card__icon .icon {
+  width: 56px;
+  height: 56px;
+  fill: var(--color-primary);
+  filter: drop-shadow(0 4px 10px rgba(84,134,48,.25));
+}
+.card__title {
+  margin: .75rem 0 .25rem;
+  font-size: clamp(1.25rem, 1.6vw + .75rem, 1.65rem);
+  font-weight: 700;
+}
+.card__text {
+  margin: 0 0 1rem;
+  color: #3a3a3a;
+  font-weight: 500;
+}
+
+/* ---------------------------
+   Buttons (especificação pedida)
+   --------------------------- */
+.cta-button {
+  /* Green buttons for all CTAs as requested */
+  background: #548630;
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;          /* FLEXBOX para ícone/label */
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  position: relative;
+  overflow: hidden;
+  animation: urgentPulse 2s infinite;  /* pulsando por padrão */
+  box-shadow: 0 4px 15px rgba(84, 134, 48, 0.3);
+}
+@keyframes urgentPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(84, 134, 48, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(84, 134, 48, 0);
+  }
+}
+.cta-button:hover,
+.cta-button:focus-visible {
+  background: #456b28;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(84, 134, 48, 0.4);
+  animation: none; /* pausa o pulso ao interagir */
+}
+
+
+.btn__icon{
+  width: 40px;
+  height: 40px;
+}
+
+
+
+/* Ripple no clique — usa cor de destaque */
+.ripple {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ripple__circle {
+  position: absolute;
+  width: 12px; height: 12px;
+  background: color-mix(in oklab, var(--color-accent), white 12%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: .6;
+  animation: ripple .6s ease-out forwards;
+}
+@keyframes ripple {
+  to { transform: translate(-50%, -50%) scale(28); opacity: 0; }
+}
+
+/* Animações de entrada */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fade-in-up .6s cubic-bezier(.16,1,.3,1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes fade-in-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rodapé */
+.footer {
+  display: flex;                 /* FLEXBOX */
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0 0.5rem;
+  color: #555;
+  width: min(100%, var(--container-w));
+  text-align: center;
+}
+.footer small {
+  border-top: 2px dashed color-mix(in oklab, var(--color-detail), white 65%);
+  padding-top: .75rem;
+}
+
+/* Acessibilidade & preferências do usuário */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up { animation: none; opacity: 1; transform: none; }
+  .cta-button { animation: none; }
+  .hero::before, .hero::after { animation: none; }
+}
+
+/* Utilitários */
+.icon { display: inline-block; vertical-align: middle; }
+.icon--small { width: 20px; height: 20px; fill: currentColor; } /* restaurado */
+.btn__label { letter-spacing: .2px; }
+
+
+/* alteração da posição circulo back */
+
+/* ==========================================================
+   AJUSTE PONTUAL — .hero::after como fundo global + animação pulse
+   - Fica fixo no viewport (cobre a página inteira, mesmo ao rolar)
+   - Fica atrás de todo o conteúdo
+   - Você controla posição/tamanho por variáveis CSS
+   ========================================================== */
+
+/* Garante que o conteúdo fique acima do fundo fixo */
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+/* (Opcional) Se antes o hero tinha overflow:hidden, não afeta mais porque é fixed,
+   mas deixo visível para evitar qualquer clipping futuro. */
+.hero { overflow: visible; }
+
+.hero::after {
+  content: "";
+  position: fixed;                 /* agora referencia o viewport */
+  top: 64%;         /* ajuste fino de posição Y */
+  left: 20%;        /* ajuste fino de posição X */
+  width: 160px;    /* ajuste de tamanho */
+  height: 160px;
+  transform: translate(-50%, -50%);/* centraliza a âncora no ponto top/left */
+  z-index: 0;                      /* atrás do conteúdo (.page tem z-index:1) */
+  pointer-events: none;            /* não bloqueia cliques */
+  background: #eca300;             /* cor de destaque */
+  opacity: 0.12;
+  border-radius: 50%;              /* forma circular */
+  animation:
+    pulseBg 4s ease-in-out infinite, /* PULSO */
+    slow-drift 24s linear infinite;  /* leve deriva opcional */
+  filter: blur(.2px);
+}
+
+/* Animação de pulso do fundo */
+@keyframes pulseBg {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: .12; }
+  50%      { transform: translate(-50%, -50%) scale(1.08); opacity: .18; }
+}
+
+
