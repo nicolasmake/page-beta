@@ -21,7 +21,7 @@ h2{
   padding: 0 20px;
 }
 
-<style>
+
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -47,7 +47,7 @@ h2{
     .whatsapp-float:hover {
       transform: scale(1.1);
     }
-  </style>
+
 
 /* Header */
 .header {
@@ -1124,5 +1124,6 @@ h2{
     padding: 1rem 1.5rem;
   }
 }
+
 
 
