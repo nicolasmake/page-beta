@@ -21,6 +21,34 @@ h2{
   padding: 0 20px;
 }
 
+<style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .whatsapp-float img {
+      width: 30px;
+      height: 30px;
+      filter: invert(1);
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+  </style>
+
 /* Header */
 .header {
   /* Changed to neutral background, keeping red for elements */
@@ -1096,4 +1124,5 @@ h2{
     padding: 1rem 1.5rem;
   }
 }
+
 
