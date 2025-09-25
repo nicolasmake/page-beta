@@ -734,6 +734,7 @@ h2{
   width: 100%;
   margin-top: 1rem;
   text-decoration: none;
+  display: inline-block;
 }
 
 .smart-choice-btn:hover {
@@ -1124,6 +1125,7 @@ h2{
     padding: 1rem 1.5rem;
   }
 }
+
 
 
 
