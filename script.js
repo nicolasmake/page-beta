@@ -1,6 +1,6 @@
 // Smooth scrolling for anchor links
 function scrollToOffer() {
-  document.getElementById("offer").scrollIntoView({
+  document.getElementById("comparison").scrollIntoView({
     behavior: "smooth",
   })
 }
@@ -254,3 +254,4 @@ function scrollToTop() {
     behavior: "smooth",
   })
 }
+
